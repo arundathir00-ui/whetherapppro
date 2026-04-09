@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { CloudRain, CalendarDays, History, Waves, Settings } from 'lucide-react';
+import { CloudRain, CalendarDays, History, Waves, Settings, Palette } from 'lucide-react';
 
 const Sidebar = () => {
     return (
@@ -46,6 +46,14 @@ const Sidebar = () => {
                 </NavLink>
 
                 <div style={{ flex: 1 }}></div>
+
+                <NavLink
+                    to="/painting"
+                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                >
+                    <Palette size={18} />
+                    Kids Painting
+                </NavLink>
 
                 <NavLink
                     to="/settings"
