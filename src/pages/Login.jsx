@@ -17,6 +17,22 @@ const Login = () => {
     setErrorObj(null);
 
     try {
+      // Offline/LocalTunnel Demo Hackathon bypass
+      if (email === 'doctor@aegis.com' && password === 'password123') {
+        localStorage.setItem('aegis_token', 'mock_jwt_token_doc');
+        localStorage.setItem('aegis_user', JSON.stringify({ firstName: 'Aris', lastName: 'Vance', role: 'doctor' }));
+        setLoading(false);
+        navigate('/doctor-dashboard');
+        return;
+      }
+      if (email === 'patient@aegis.com' && password === 'password123') {
+        localStorage.setItem('aegis_token', 'mock_jwt_token_pat');
+        localStorage.setItem('aegis_user', JSON.stringify({ firstName: 'Test', lastName: 'Patient', role: 'patient' }));
+        setLoading(false);
+        navigate('/patient-dashboard');
+        return;
+      }
+
       // Prompt 5: Mapped functional POST Request to custom backend
       const res = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
